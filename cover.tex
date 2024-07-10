@@ -1,6 +1,7 @@
 \documentclass{article}
 
-\providecommand\PSUtoname{John Doe}
+\providecommand\PSUgreetname{John}
+\providecommand\PSUtoname{Prof. John Doe}
 \providecommand\PSUtoaddress{Anytown, USA}
 
 
@@ -48,10 +49,10 @@
 \providecommand\PSUfromemail{\url{paul.grieco@psu.edu}}
 \providecommand\PSUfromweb{\url{https://paulgrieco.github.io/}}
 
-\providecommand\PSUtoname{PSUtoname}
-\providecommand\PSUtoaddress{PSUtoaddress}
+\providecommand\PSUtoname{}
+\providecommand\PSUtoaddress{}
 \providecommand\PSUdate{\vspace{0.25in}\hfill \today}
-\providecommand\PSUopening{Dear \PSUtoname,}
+\providecommand\PSUopening{Dear \PSUgreetname,}
 \providecommand\PSUclosing{Sincerely}
 % Update this and the next line to the correct path
 \providecommand\PSUsignaturefile{john_hancock}
@@ -113,8 +114,7 @@
     \bigskip
 
     \PSUtoname\ifthenelse{\equal{\PSUtoname}{}}{}{\\}
-    \PSUtoaddress
-    \bigskip
+    \PSUtoaddress\ifthenelse{\equal{\PSUtoaddress}{}}{}{\bigskip}
 
     \PSUopening\par
     }
@@ -141,7 +141,7 @@
 
 This is such a great cover letter template. But I wonder if the website runs to far to the right. Let's write another sentence to see if it wraps around.
 
-\lipsum[1-5]
+\lipsum[1-3]
 
 Wow!
 
