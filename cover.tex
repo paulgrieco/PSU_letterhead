@@ -1,7 +1,7 @@
 \documentclass{article}
 
-\providecommand\PSUtoname{To Someone}
-\providecommand\PSUtoaddress{To Address\\Goes Here}
+\providecommand\PSUtoname{John Doe}
+\providecommand\PSUtoaddress{Anytown, USA}
 
 
 % Measurements are taken directly from the guide
@@ -13,6 +13,9 @@
 \usepackage[absolute]{textpos}
 \usepackage{ifthen}
 \usepackage{soul}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{lipsum}
 
 %
 %% --- For placement of the horizontal line
@@ -31,21 +34,23 @@
 % Ensure consistency in the footer
 \urlstyle{sf}
 
-\providecommand\PSUfromname{My Name}
-\providecommand\PSUfromtitle{Professor Title}
+\definecolor{PSUblue}{RGB}{4, 30, 66}
+
+\providecommand\PSUfromname{Paul L. E. Grieco}
+\providecommand\PSUfromtitle{Professor of Economics}
 \providecommand\PSUfromdegree{}
-\providecommand\PSUfromdepartment{Department of X}
-\providecommand\PSUfromcollege{College of Y and Z}
+\providecommand\PSUfromdepartment{Co-Editor, {\it Journal of Industrial Economics}}
+\providecommand\PSUfromcollege{College of Liberal Arts}
 \providecommand\PSUfromuniversity{The Pennsylvania State University}
-\providecommand\PSUfromaddress{OFFICE\\University Park, PA 16802}
-\providecommand\PSUfromtel{XXX-XXX-XXXX}
-\providecommand\PSUfromfax{YYY-YYY-YYYY}
-\providecommand\PSUfromemail{\url{email@psu.edu}}
-\providecommand\PSUfromweb{\url{http://www.website.edu}}
+\providecommand\PSUfromaddress{502 Kern Graduate Building\\University Park, PA 16802}
+\providecommand\PSUfromtel{814-867-3310}
+\providecommand\PSUfromfax{~}
+\providecommand\PSUfromemail{\url{paul.grieco@psu.edu}}
+\providecommand\PSUfromweb{\url{https://paulgrieco.github.io/}}
 
 \providecommand\PSUtoname{PSUtoname}
 \providecommand\PSUtoaddress{PSUtoaddress}
-\providecommand\PSUdate{\vspace{2.5cm}\today}
+\providecommand\PSUdate{\vspace{2.5cm} \hfill \today}
 \providecommand\PSUopening{Dear \PSUtoname,}
 \providecommand\PSUclosing{Sincerely}
 % Update this and the next line to the correct path
@@ -70,23 +75,29 @@
 \fancypagestyle{cover}{
 \fancyhead[L]{\fontsize{8}{10} \selectfont%
     \begin{textblock*}{2.5in}[0.365,0.40](1.5in,1.4in)
-            \includegraphics[width=1.5in]{\PSUlogofile}
+            \includegraphics[width=1.7in]{\PSUlogofile}
     \end{textblock*}
     \begin{textblock*}{5.375in}(2.4in,1.4in)   % 6.375=8.5 - 1.5 - 0.625
+        \textcolor{PSUblue}{
         {\textbf \PSUfromname}\\
         \PSUfromtitle\\
-        \PSUfromdepartment
+        %\PSUfromdepartment
+        }
     \end{textblock*}
-    \begin{textblock*}{5.375in}(4.2in,1.4in)   % 6.375=8.5 - 1.5 - 0.625
-        \PSUfromcollege\\
+    \begin{textblock*}{5.375in}(4.125in,1.4in)   % 6.375=8.5 - 1.5 - 0.625
+        \textcolor{PSUblue}{
+        %\PSUfromcollege\\
         \PSUfromuniversity\\
         \PSUfromaddress
+        }
     \end{textblock*}
-    \begin{textblock*}{5.375in}(6.6in,1.4in)   % 6.375=8.5 - 1.5 - 0.625
+    \begin{textblock*}{5.375in}(6.35in,1.4in)   % 6.375=8.5 - 1.5 - 0.625
+        \textcolor{PSUblue}{
         \PSUfromtel\\
-        \PSUfromfax\\
+        %\PSUfromfax\\
         \PSUfromemail\\
         \PSUfromweb\\
+        }
     \end{textblock*}
     }
 }
@@ -109,21 +120,27 @@
 
 
 \AtEndDocument{
-\centering
+    \begin{minipage}{\textwidth}
+    \begin{adjustwidth}{3.5in}{0in}
     \par\vspace{2ex}
-    \PSUclosing,
+    
+
+    \PSUclosing,\par\vspace{2ex}
 
     \ifthenelse{\equal{\PSUsignaturefile}{}}
     {\bigskip\bigskip}
-    {\includegraphics[width=2.0in]{\PSUsignaturefile}\\[-0.2\baselineskip]}
-
-    \PSUfromname \\
-    \PSUenclosure
+    {\includegraphics[width=2.0in]{\PSUsignaturefile}\\}
+    \PSUfromname \\ \PSUfromdepartment
+    %\PSUenclosure
+    \end{adjustwidth}
+    \end{minipage}
 }
 
 \begin{document}
 
-This is such a great cover letter template.
+This is such a great cover letter template. But I wonder if the website runs to far to the right. Let's write another sentence to see if it wraps around.
+
+\lipsum[1-4]
 
 Wow!
 
